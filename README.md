@@ -49,3 +49,18 @@ telecom-churn-prediction/
 └─ reports/
    ├─ figures/
    └─ metrics.txt
+
+## Utforskende dataanalyse (EDA)
+
+Notebooken [01_telco_churn_eda_and_modeling.ipynb](notebooks/01_telco_churn_eda_and_modeling.ipynb)
+inneholder en trinnvis utforskning av churn-datasettet.
+
+Her viser jeg:
+- hvordan data lastes inn og ryddes
+- churn-rate og fordeling på sentrale variabler
+- sammenhenger mellom churn og både numeriske og kategoriske features
+- en enkel Random Forest-modell for å identifisere de viktigste churn-driverne
+- visualisering av ROC-kurve og feature importance
+
+Notebooken er laget for å demonstrere hvordan man går fra rå data til
+innsikt og første modell — en realistisk dataanalytikerprosess i Python.
