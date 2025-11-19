@@ -1,66 +1,92 @@
-# Telecom Customer Churn Prediction (Python / Scikit-learn)
+# 📉 Telecom Customer Churn Prediction (Python / Scikit-learn)
 
-Dette prosjektet er et end-to-end churn-prediksjonsprosjekt for en fiktiv teleoperatør.  
-Målet er å forutsi om en kunde kommer til å avslutte abonnementet (churn) basert på
-kundedata, kontraktstype, betalingsmetode og hvilke tjenester kunden bruker.
+Dette prosjektet er et komplett, praktisk churn-prediksjonssystem for en fiktiv teleoperatør.  
+Målet er å forutsi hvilke kunder som mest sannsynlig avslutter abonnementet sitt basert på kundedata, kontrakter, tjenester og betalingsinformasjon.
 
-Prosjektet er laget for å vise forståelse for:
-- Databehandling og feature engineering i Python
-- Bruk av `scikit-learn`-pipelines (preprocessing + modell)
-- Tren/test-splitt, evaluering med ROC AUC, presisjon, recall og F1
-- Sammenligning av flere klassifikasjonsmodeller
-- Lagre trenet modell til disk for senere bruk
+Prosjektet demonstrerer både dataforståelse, dataforberedelse og maskinlæring – fra rådata til ferdig trent modell.
 
-## Datasett
+---
 
-Datasettet er IBM sitt **Telco Customer Churn**-datasett (ofte brukt i churn-eksempler):
+## 🎯 Hva prosjektet demonstrerer
 
-- Hver rad = én kunde
-- Target-kolonne: `Churn` (Yes/No)
-- Eksempler på featurer:
-  - Demografi: `gender`, `SeniorCitizen`, `Partner`, `Dependents`
-  - Konto: `tenure` (antall måneder), `Contract`, `PaymentMethod`,
-    `PaperlessBilling`
-  - Tjenester: `PhoneService`, `InternetService`, `OnlineSecurity`,
-    `StreamingTV`, `StreamingMovies`
-  - Økonomi: `MonthlyCharges`, `TotalCharges`
+- Databehandling og feature engineering i Python  
+- Tren/test-split, modelltrening og evaluering  
+- Sammenligning av flere klassifikasjonsmodeller (LogReg, RandomForest, XGBoost)  
+- ROC AUC, presisjon, recall, F1-score  
+- Lagre modeller med `joblib`  
+- Produksjonsklar prosjektstruktur
 
-Datasettet kan lastes ned fra Kaggle (søk etter **"Telco Customer Churn"**).  
-Lagre filen `WA_Fn-UseC_-Telco-Customer-Churn.csv` inn i `data/raw/`.
+---
 
-> Merk: Selve datafilen er **ikke** inkludert i repoet (ligger i `.gitignore`).
-
-## Prosjektstruktur
+## 🗂️ Prosjektstruktur
 
 ```text
 telecom-churn-prediction/
-├─ README.md
-├─ requirements.txt
-├─ .gitignore
 ├─ data/
-│  ├─ raw/
-│  └─ processed/
+│  └─ telco_customer_churn.csv
+│
 ├─ notebooks/
-│  └─ 01_telco_churn_eda_and_modeling.ipynb
+│  └─ 01_telco_eda_and_modeling.ipynb
+│
+├─ models/
+│  ├─ churn_model.pkl
+│  └─ scaler.pkl
+│
+├─ reports/
+│  └─ evaluation_metrics.json
+│
 ├─ src/
+│  ├─ data_loader.py
+│  ├─ preprocess.py
 │  ├─ train_models.py
 │  └─ utils.py
-├─ models/
-└─ reports/
-   ├─ figures/
-   └─ metrics.txt
+│
+├─ requirements.txt
+└─ README.md
+```
 
-## Utforskende dataanalyse (EDA)
+## ▶️ Kom i gang
+1️⃣ Opprett og aktiver virtuelt miljø
 
-Notebooken [01_telco_churn_eda_and_modeling.ipynb](notebooks/01_telco_churn_eda_and_modeling.ipynb)
-inneholder en trinnvis utforskning av churn-datasettet.
+```bash
+python -m venv .venv
 
-Her viser jeg:
-- hvordan data lastes inn og ryddes
-- churn-rate og fordeling på sentrale variabler
-- sammenhenger mellom churn og både numeriske og kategoriske features
-- en enkel Random Forest-modell for å identifisere de viktigste churn-driverne
-- visualisering av ROC-kurve og feature importance
+# Windows PowerShell:
+.\.venv\Scripts\Activate.ps1
 
-Notebooken er laget for å demonstrere hvordan man går fra rå data til
-innsikt og første modell — en realistisk dataanalytikerprosess i Python.
+pip install -r requirements.txt
+```
+
+2️⃣ Tren modellen
+```bash
+python -m src.train_models
+```
+
+3️⃣ Utdata
+- Trenet modell ligger i /models
+- Evalueringsresultater i /reports
+- Notebook med EDA i /notebooks
+
+---
+
+## 📊 Modellresultater
+- ROC AUC
+- Accuracy
+- Precision
+- Recall
+- F1-score
+
+(verdier varierer etter kjøring)
+
+---
+
+## 🚀 Videre arbeid
+- Legge til SHAP feature importance
+- Lage en REST-API (FastAPI eller Flask) for prediksjoner
+- Legge til hyperparameter-tuning (GridSearch eller Optuna)
+
+---
+
+## 👤 Forfatter
+Runar Olsen
+Data Analyst – Python | Power BI | Machine Learning
